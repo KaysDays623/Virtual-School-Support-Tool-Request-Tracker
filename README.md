@@ -25,6 +25,20 @@ In a virtual school environment, staff often need quick support tools, tutorials
 * Responsive internal-tool-style layout
 * Fake/sample data only
 
+## Screenshots
+
+### Staff Request Page
+
+![Staff Request Page](screenshots/staff-request-page.png)
+
+### IT Staff Dashboard
+
+![IT Staff Dashboard](screenshots/it-dashboard.png)
+
+### Search and Filters
+
+![Search and Filters](screenshots/filters.png)
+
 ## Tech Stack
 
 ### Frontend
