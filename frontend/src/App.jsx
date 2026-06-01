@@ -54,13 +54,9 @@ function App() {
 
       // Saves the request data from the backend into the requests state.
       setRequests(data);
-
-      // Starts a catch block to handle errors from the try block.
     } catch (error) {
       // Saves the error message so it can be displayed on the page.
       setErrorMessage(error.message);
-
-      // Starts a finally block that runs whether the fetch succeeds or fails.
     } finally {
       // Sets loading to false because the app is done trying to load the data.
       setIsLoading(false);
@@ -108,8 +104,6 @@ function App() {
         // Returns a new array that includes all current requests plus the new request.
         return [...currentRequests, createdRequest];
       });
-
-      // Starts a catch block to handle errors from the try block.
     } catch (error) {
       // Saves the error message so it can be displayed on the page.
       setErrorMessage(error.message);
@@ -158,8 +152,6 @@ function App() {
           return request;
         });
       });
-
-      // Starts a catch block to handle any errors from the try block.
     } catch (error) {
       // Saves the error message so it can be displayed on the page.
       setErrorMessage(error.message);
@@ -199,8 +191,6 @@ function App() {
         // Returns a new array that removes the request with the matching id.
         return currentRequests.filter((request) => request.id !== id);
       });
-
-      // Starts a catch block to handle any errors from the try block.
     } catch (error) {
       // Saves the error message so it can be displayed on the page.
       setErrorMessage(error.message);
@@ -237,16 +227,12 @@ function App() {
     const matchesSearch =
       // Checks if the request title includes the search text.
       request.title.toLowerCase().includes(searchText) ||
-
       // Checks if the request department includes the search text.
       request.department.toLowerCase().includes(searchText) ||
-
       // Checks if the request type includes the search text.
       request.requestType.toLowerCase().includes(searchText) ||
-
       // Checks if the request notes include the search text.
       request.notes.toLowerCase().includes(searchText) ||
-
       // Checks if the submitter's name includes the search text.
       request.submittedBy.toLowerCase().includes(searchText);
 
@@ -269,13 +255,10 @@ function App() {
     return (
       // Requires the request to match the search text.
       matchesSearch &&
-
       // Requires the request to match the selected status filter.
       matchesStatus &&
-
       // Requires the request to match the selected priority filter.
       matchesPriority &&
-
       // Requires the request to match the selected department filter.
       matchesDepartment
     );
@@ -388,13 +371,10 @@ function App() {
                   <input
                     // Sets the input type to text.
                     type="text"
-
                     // Connects the input value to the searchTerm state variable.
                     value={searchTerm}
-
                     // Updates searchTerm whenever the user types in the search box.
                     onChange={(event) => setSearchTerm(event.target.value)}
-
                     // Displays helper text inside the input before the user types.
                     placeholder="Search by title, department, type, notes, or submitter..."
                   />
@@ -411,7 +391,6 @@ function App() {
                     <select
                       // Connects the dropdown value to the statusFilter state variable.
                       value={statusFilter}
-
                       // Updates statusFilter whenever the user picks a new status.
                       onChange={(event) => setStatusFilter(event.target.value)}
                     >
@@ -441,7 +420,6 @@ function App() {
                     <select
                       // Connects the dropdown value to the priorityFilter state variable.
                       value={priorityFilter}
-
                       // Updates priorityFilter whenever the user picks a new priority.
                       onChange={(event) => setPriorityFilter(event.target.value)}
                     >
@@ -468,7 +446,6 @@ function App() {
                     <select
                       // Connects the dropdown value to the departmentFilter state variable.
                       value={departmentFilter}
-
                       // Updates departmentFilter whenever the user picks a new department.
                       onChange={(event) =>
                         setDepartmentFilter(event.target.value)
@@ -495,20 +472,21 @@ function App() {
                   filter options.
                 </p>
               ) : (
-                // Creates a grid container to hold all visible request cards.
+                // Creates one grid container to hold all visible request cards.
                 <div className="request-grid">
-                  {/* Loops through the filteredRequests array and creates one request card for each visible request. */}
+                  {/* Loops through filteredRequests once and creates one card per request. */}
                   {filteredRequests.map((request) => (
-                <div className="request-grid">
-                  {filteredRequests.map((request) => (
+                    // Displays one RequestCard for the current request.
                     <RequestCard
+                      // Gives React a unique key for this request card.
                       key={request.id}
+                      // Sends the current request object into RequestCard.
                       request={request}
+                      // Sends the status update function into RequestCard.
                       onUpdateStatus={handleUpdateStatus}
+                      // Sends the delete function into RequestCard.
                       onDeleteRequest={handleDeleteRequest}
                     />
-                  ))}
-                </div>
                   ))}
                 </div>
               )}
